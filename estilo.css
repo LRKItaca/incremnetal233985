@@ -1,0 +1,95 @@
+body {
+    background-color: black;
+    color: white;
+    text-align:center;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+#cabecera {
+    background-color: white;
+    position:sticky;
+    border-radius: 10px;
+    margin-left:auto;
+    margin-right:auto;
+    width: 100px;
+    font-size:large;
+    
+}
+#cabesita {
+
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Veyon-logo.svg/1200px-Veyon-logo.svg.png");
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position-x: center;
+    background-position-y: center;
+    color: black;
+
+}
+
+#myLog {
+    border: 2px;
+    position:absolute;
+    border-style:solid;
+    top: 80px;
+    border-color:white;
+    background-color: white;
+    border-color: rgb(229, 227, 227);
+    border-radius: 10px;
+    color :black;
+    border-width: 2px;
+    padding:10px;
+    width:300px;
+    text-align:left;
+    border-radius:2px;
+    font-family:  'Courier New', Courier, monospace;
+    transition: opacity 2s linear;
+
+}
+
+#subir {
+    transition: opacity 0.3s linear;
+    opacity: 0; 
+}
+
+#tienda {
+    transition: opacity 0.2s linear;
+}
+
+.separador {
+    height:2px;
+    background-color:white;
+    width:100%;
+}
+
+
+#parte {
+    background-color: rgb(140, 226, 140);
+    color:black;
+    border-radius:10px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#parte:hover {
+    background-color: rgb(193, 196, 193);
+    color:red;
+}
+
+#dinero {
+    display:none;
+    background-color: rgb(167, 248, 167);
+    color: black;
+    margin-left:auto;
+    text-align:center;
+    margin-right:auto;
+    border-radius:10px;
+    width: 100px;
+
+}
+#partes {
+    background-color: rgb(167, 248, 167);
+    color: black;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:10px;
+    width: 300px;
+}

@@ -5,18 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Itaca Clicker</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="estilo.css">
 </head>
 
 <body>
     <header id="cabecera">
-        ITACA CLICKER
+       <p id = "cabesita">ITACA CLICKER</p>
     </header>    
-
+    
+    <div>
+        <p id = "partes">0 Partes. Actualemte: 0 PS.</p>
+        <p id = "dinero">0 Euros</p>
+        <button onclick="parte()" id="parte">Dar un parte.</button>
+        <p id="myLog">CONSOLA.</p>
+    </div>
+    
+    <hr class="separador"> 
+    <div id = tienda> 
+    <button onclick="subir()" id = "subir" style="display:none" >+ 1 P/C | Subir un PDF. Coste: 10 | Tienes: 0 PDFs </button>
+    <button onclick="confiscar()" id = "confiscar" style="display:none">+ 3 P/C | Confisca un móvil. Coste: 200 | Tienes 0 móviles.</button>
+    <button onclick="vender()" style="display:none" id="vender">Vender 200 partes por 1 €</button>
+    <br><br><br>
+    <button onclick="sigad()" id = "sigad" style="display:none">+ 10 P/S | Automatizar el SIGAD | Has automatizado 0 SIGADs </button>
+    <button onclick = "quejas()" id = "quejas" style="display:none" >+ 20 P/S | Abrir un buzón de quejas | Has abierto 0 buzones</button>
     
 
 
-    
+
+    </div>
     <script src="main.js" charset="utf-8" type="text/javascript"></script>
 </body>
 </html>
