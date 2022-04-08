@@ -4,6 +4,9 @@ var j = { //datos del juego
     partesporclic: 1,
     dinero: 0,
     pps: 0,
+    eurosporsegundo:0,
+    cafes:0,
+    cafesporsegundo:0,
 }
 
 var c = { // cantidadd
@@ -18,6 +21,14 @@ var c = { // cantidadd
     ordenador:0,
 
     comprar:0,
+    becarios:0,
+    anuncios:0,
+    acciones:0,
+    oracle:0,
+    maquina:0,
+
+
+    mandar:0,
 }
 
 var cos = { // costes
@@ -33,6 +44,14 @@ var cos = { // costes
 
 
     comprar:100,
+    becarios:150,
+    anuncios:300,
+    acciones:1000,
+    oracle:5000,
+    maquina: 10000,
+
+
+    mandar: 100,
 }
 
 formato = new Intl.NumberFormat('es-ES')
@@ -41,7 +60,11 @@ var bucle = window.setInterval(function() {
 
   mostrar()
   j.partes += j.pps
-  update("partes", formato.format(j.partes.toFixed(0)) + " Partes. Actualmente " + Math.round(j.pps*100/0.5) + " PS")
+  j.dinero += j.eurosporsegundo
+  j.cafes += j.cafesporsegundo
+  update("partes", formato.format(j.partes.toFixed(0)) + " Partes.")
+  update("dinero", formato.format(j.dinero.toFixed(2)) + " Euros")
+  update("cafecito", j.cafes + " Cafés")
 },10)
 
 var input = document.getElementById("parte")
@@ -68,9 +91,16 @@ document.addEventListener('keypress', function (e) {
 });
 
 function actualizacion(){
-    update("partes", formato.format(j.partes.toFixed(0)) + " Partes. Actualmente " + Math.round(j.pps*100/0.5) + " PS")
+
+    update("PPS", Math.round(j.pps*100) + " PPS")
+    update("EPS", Math.round(j.eurosporsegundo*100) + " EPS")
+
+
+    // Cositas
+    update("partes", formato.format(j.partes.toFixed(0)) + " Partes.")
     update("dinero", formato.format(j.dinero.toFixed(2)) + " Euros")
     update("parte", "Dar "+formato.format(j.partesporclic.toFixed(0)) + " Partes")
+    update("cafecito", j.cafes + " Cafés")
 
     // Partes por click
 
@@ -87,8 +117,17 @@ function actualizacion(){
     update("ordenador","+30 P/S | Mover el ratón automáticamente a los alumnos | Coste: "+cos.ordenador+" | Has movido "+c.ordenador+" ratones")
 
     // Euros
+    
+    update ("comprar", "+1 E/S | Comprar una mina de bitcoins | Coste: "+cos.comprar + " Euros. | Tienes " + c.comprar + " minas")
+    update ("becarios", "+ 1 E/S, -1000 P/S | Hacer que un becario te venda los partes | Coste: " + cos.becarios+" Euros. | Tienes "+c.becarios+" becarios")
+    update ("marketing", "+5 E/S | Publicitar las clases por internet. | Coste: "+cos.anuncios+" Euros. | Has hecho "+c.anuncios+" anuncios" )
+    update ("instituto", "+10 E/S | Comprar acciones de otros institutos | Coste "+cos.acciones+" Euros. | Has comprado "+c.acciones+" acciones")
+    update ("oracle", "+25 E/S | Comprar porciones de ORACLE S.L. | Coste: "+cos.oracle+" Euros. | Has comprado "+c.oracle+" Porciones")
 
-    update ("comprar", "+1 E/S | Comprar una mina de bitcoins por "+cos.comprar + " | Tienes " + c.comprar + " minas")
+    // Cafes
+
+    update ("maquina", "+ 50 E/S | Comprar una máquina de café | Coste: " +cos.maquina+" Euros. | Has comprado "+c.maquina+" Máquinas")
+    update ("mandar", "+100 C/S | Mandar a un alumno a que te traiga café | Coste: "+cos.mandar+" Cafés | Has mandado a "+c.mandar+" Alumnos")
 
 
 }
@@ -114,7 +153,7 @@ function mostrar(){
     if (j.partes >= 600){
         document.getElementById("vender").style.display = 'inline'
         document.getElementById("parking").style.display ='inline'
-        fade(parking)
+        fade("parking")
         setTimeout(function(){
             document.getElementById("vender").style.opacity = 1
         },100)
@@ -133,15 +172,53 @@ function mostrar(){
 
     if (j.partes >= 15000) {
         document.getElementById("quejas").style.display = 'inline'
+        document.getElementById("ordenador").style.display = 'inline'
         setTimeout(function(){
             document.getElementById("quejas").style.opacity = 1
+            document.getElementById("ordenador").style.opacity = 1
         },100)
     }
 
-    if (j.euros >= 50){
-        document.getElementById("comprar".style.display = 'inline')
+    if (j.dinero >= 50){
+        document.getElementById("comprar").style.display = 'inline'
         fade("comprar")
     }
+    if (j.dinero >= 100){
+        document.getElementById("becarios").style.display = 'inline'
+        fade("becarios")
+    }
+    if (j.dinero >= 200){
+        document.getElementById("marketing").style.display = 'inline'
+        fade("marketing")
+    }
+    if (j.dinero >= 500){
+        document.getElementById("instituto").style.display='inline'
+        fade("instituto")
+    }
+    if (j.dinero >= 2000){
+        aparecer("oracle")
+        fade("oracle")
+    }
+    if (j.dinero >= 7000){
+        aparecer("maquina")
+        fade("maquina")
+    }
+    if (c.oracle == 100){
+        document.getElementById("instituto").style.display='none'
+        update("myLog","Enhorabuena, ahora posees oracle. Multiplica por 2 tus E/S")
+    }
+
+    if (j.cafes == 50){
+        update("myLog","Te empiezas a sentir un poco nervioso")
+
+    }
+    if (j.cafes >= 70){
+        aparecer(mandar)
+    }
+}
+
+function aparecer(id){
+    document.getElementById(id).style.display = 'inline'
 }
 
 function fade(id){
@@ -179,6 +256,7 @@ function vender(){
         actualizacion()
         document.getElementById("dinero").style.display = 'table'
         document.getElementById("myLog").style.top = '120px'
+        aparecer("EPS")
         update("myLog", "Has vendido 200 partes.")
         texto()
     } else {
@@ -253,7 +331,7 @@ const nacionalidad = ["Afganistán","Albania","Alemania","Andorra","Angola","Ant
 function acoger(){
     if (j.partes > cos.alumnos){
         j.partes -= cos.alumnos
-        j.pps += 0.03
+        j.pps += 0.05
         cos.alumnos *= 1.1
         c.alumnos +=1
         cos.alumnos = Math.trunc(cos.alumnos)
@@ -269,7 +347,7 @@ function acoger(){
 function sigad(){
     if (j.partes >= cos.sigad){
         j.partes -= cos.sigad
-        j.pps += 0.05
+        j.pps += 0.1
         c.sigad += 1
         cos.sigad *= 1.05
         cos.sigad = Math.trunc(cos.sigad)
@@ -306,11 +384,11 @@ const quejass = [
 function quejas(){
     if (j.partes >= cos.quejas){
         j.partes -= cos.quejas
-        j.pps += 0.1
+        j.pps += 0.2
         c.quejas += 1
-        cos.quejas *= 1.2
+        cos.quejas *= 1.1
         cos.quejas = Math.trunc(cos.quejas)
-        update("myLog", "QUEJA: "+quejas[Math.floor(Math.round() * quejas.length)])
+        update("myLog", "QUEJA: "+quejass[Math.floor(Math.random() * quejass.length)])
         texto()
         actualizacion()
     } else {
@@ -325,8 +403,8 @@ function parking(){
         j.partes -= cos.parking
         j.partesporclic += 20
         c.multas +=1
-        cos.parking *= 1.25
-        cos.quejas = Math.trunc(cos.parking)
+        cos.parking *= 1.15
+        cos.parking = Math.trunc(cos.parking)
         update("myLog", "Has puesto una multa.")
         texto()
         actualizacion()
@@ -339,9 +417,9 @@ function parking(){
 function ordenador(){
     if (j.partes >= cos.ordenador){
     j.partes -= cos.ordenador
-    j.pps += 0.2
+    j.pps += 0.4
     c.ordenador += 1
-    cos.ordenador *= 1.3
+    cos.ordenador *= 1.2
     cos.ordenador = Math.trunc(cos.quejas)
     update("myLog", "Has movido un ratón.")
     texto()
@@ -353,11 +431,11 @@ function ordenador(){
 }
 
 function comprar(){
-    if (j.euros >= cos.comprar){
-        j.euros -= cos.comprar
-        j.euros = j.euros.toFixed(2)
+    if (j.dinero >= cos.comprar){
+        j.dinero -= cos.comprar
+        j.eurosporsegundo += 0.01
         c.comprar += 1
-        cos.comprar *= 1.5
+        cos.comprar *= 1.1
         cos.comprar = cos.comprar.toFixed(2)
         update("myLog", "Has comprado un ordenador.")
         texto()
@@ -366,4 +444,117 @@ function comprar(){
         update ("myLog", "ERROR: No tienes suficiente dinero")
         texto()
     }
+}
+
+function becarios(){
+    if (j.dinero >= cos.becarios && j.pps > 9){
+        j.dinero -= cos.becarios
+        j.eurosporsegundo+=0.01
+        c.becarios+=1
+        j.pps -= 9
+        cos.becarios*=1.01
+        cos.becarios = cos.becarios.toFixed(2)
+        update("myLog", "Has contratado un becario.")
+        texto()
+        actualizacion()
+    } else {
+        if (j.pps < 9){
+            update ("myLog", "ERROR: No tienes suficientes partes por segundo")
+        texto() 
+        } else{
+        update ("myLog", "ERROR: No tienes suficiente dinero")
+        texto()
+    }
+    }
+}
+
+function marketing(){
+    if (j.dinero >= cos.anuncios){
+        j.dinero -= cos.anuncios
+        j.eurosporsegundo+=0.05
+        c.anuncios+=1
+        cos.anuncios*=1.3
+        cos.anuncios = cos.anuncios.toFixed(2)
+        update("myLog", "Has publicado un anuncio.")
+        texto()
+        actualizacion()
+    }else {
+        update ("myLog", "ERROR: No tienes suficiente dinero")
+        texto()
+    }
+}
+
+function instituto(){
+    if (j.dinero >= cos.acciones){
+        j.dinero -= cos.acciones
+        j.eurosporsegundo+=0.1
+        c.acciones+=1
+        cos.anuncios*=1.15
+        cos.acciones=cos.acciones.toFixed(2)
+        update("myLog","Has comprado una acción en bolsa")
+        texto()
+        actualizacion()
+
+    } else {
+        update ("myLog", "ERROR: No tienes suficiente dinero")
+        texto()
+    }
+}
+
+function oracle(){
+    if (j.dinero >= cos.oracle){
+        j.dinero -= cos.oracle
+        j.eurosporsegundo+=0.25
+        c.oracle+=1
+        cos.oracle*=1.05
+        cos.oracle=cos.oracle.toFixed(2)
+        update("myLog","Has comprado una porción de Oracle")
+        texto()
+        actualizacion()
+        if (c.oracle >= 99){
+            j.eurosporsegundo*=1.2
+        }
+
+    } else {
+        update ("myLog", "ERROR: No tienes suficiente dinero")
+        texto()
+    }
+}
+
+function maquina(){
+    if (j.dinero >= cos.maquina){
+        if (document.getElementById("cafecito").style.display = 'none'){
+            document.getElementById("cafecito").style.display = 'table'
+            document.getElementById("damecafe").style.display = 'table'
+
+        }
+        j.dinero -= cos.maquina
+        c.maquina+=1
+        cos.maquina*=1.08
+        cos.maquina = cos.maquina.toFixed(2)
+        update("myLog","Has comprado una máquina. Te sientes bien.")
+        texto()
+        actualizacion()
+    } else {
+        update ("myLog", "ERROR: No tienes suficiente dinero")
+        texto()
+    }
+}
+
+function damecafe(){
+    j.cafes += 1
+    actualizacion()
+}
+function mandar(){
+    if (j.cafes >= cos.mandar){
+        j.cafes -= cos.mandar
+        c.mandar += 1
+        cos.mandar *= 1.15
+        update("myLog","Has mandado a "+ alumnosdeclase[Math.floor(Math.random()*alumnosdeclase.length)])
+        texto()
+    } else {
+        update ("myLog", "ERROR: No tienes suficientes cafés")
+        texto()
+    }
+
 }

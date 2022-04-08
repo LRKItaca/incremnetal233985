@@ -15,9 +15,15 @@
     </header>    
     
     <div>
-        <p id = "partes">0 Partes. Actualmente: 0 PS.</p>
+
+        <p id="PPS">0 PPS</p>
+        <p id="EPS">0 EPS</p>
+        <p id = "partes">0 Partes.</p>
         <p id = "dinero">0 Euros</p>
+        <p id = "cafecito">0 Cafés</p>
         <button onclick="parte()" id="parte">Dar un parte.</button>
+        <br><br>
+        <button onclick="damecafe()" style="display:none"  id="damecafe">Pedir un café.</button>
         <p id="myLog">CONSOLA.</p>
         <p id="vigilando">SIEMPRE ESTAMOS VIGILANDO - VEYON</p>
     </div>
@@ -35,7 +41,14 @@
     <button onclick="ordenador()"id="ordenador"style="display:none">+30 P/S | Mover el ratón automáticamente a los alumnos | Coste: 15000 | Has movido 0 ratones</button>
     <br><br><br>
     <button onclick="vender()" style="display:none" id="vender">Vender 1000 partes por 1 €</button>
-    <button onclick="comprar()" style = "display:none" id = "comprar">+1 E/S | Comprar una mina de bitcoins por 100 € | Tienes 0 minas</button>
+    <button onclick="comprar()" style = "display:none" id = "comprar">+1 E/S | Comprar una mina de bitcoins | Coste: 100 Euros. | Tienes 0 minas</button>
+    <button onclick="becarios()" style="display:none" id="becarios">+ 1 E/S, -1000 P/S | Hacer que un becario te venda los partes  | Coste 100 Euros. | Tienes 0 becarios</button>
+    <button onclick="marketing()" style="display:none" id="marketing">5 E/S | Publicitar las clases por internet. | Coste: 300 Euros. | Has hecho 0 anuncios</button>
+    <button onclick="instituto()" style="display:none" id="instituto">+10 E/S | Comprar acciones de otros institutos | Coste: 1000 Euros. | Has comprado 0 acciones</button>
+    <button onclick="oracle()" style="display:none" id="oracle">+25 E/S | Comprar porciones de ORACLE S.L. | Coste: 5000 Euros. | Has comprado 0 Porciones</button>
+    <br><br><br>
+    <button onclick="maquina()" style="display:none" id="maquina">+ ??? | Comprar una máquina de café | Coste: 10000 Euros. | Has comprado 0 Máquinas</button>
+    <button onclick="mandar()" style ="display:none" id="mandar">+100 C/S | Mandar a un alumno a que te traiga café | Coste: 100 Cafés | Has mandado a 0 Alumnos</button>
 
 
 

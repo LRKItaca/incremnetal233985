@@ -4,6 +4,31 @@ body {
     text-align:center;
     font-family:Verdana, Geneva, Tahoma, sans-serif
 }
+
+
+#PPS {
+    position:absolute;
+    right:30%;
+    top:5px;
+    border: 2px;
+    border-radius: 2px;
+    background-color:rgb(194, 246, 212);
+    color:black;
+
+}
+#EPS {
+    position:absolute;
+    top:30px;
+    right:30%;
+    border: 2px;
+    border-radius: 2px;
+    background-color:rgb(194, 246, 212);
+    color:black;
+    display:none;
+}
+
+
+
 button{
     --glow-color: rgb(217, 176, 255);
     --glow-spread-color: rgba(191, 123, 255, 0.213);
@@ -138,7 +163,7 @@ img {
 }
 
 
-#parte {
+#parte,#damecafe {
     background-color: rgb(140, 226, 140);
     color:black;
     border-radius:10px;
@@ -146,11 +171,20 @@ img {
     margin-right:auto;
 }
 
-#parte:hover {
+#parte:hover,#damecafe:hover {
     background-color: rgb(193, 196, 193);
     color:red;
 }
-
+#cafecito {
+    display:none;
+    background-color: rgb(167, 248, 167);
+    color: black;
+    margin-left:auto;
+    text-align:center;
+    margin-right:auto;
+    border-radius:10px;
+    width: 100px;
+}
 #dinero {
     display:none;
     background-color: rgb(167, 248, 167);
