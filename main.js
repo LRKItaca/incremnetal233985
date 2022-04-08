@@ -310,7 +310,7 @@ function quejas(){
         c.quejas += 1
         cos.quejas *= 1.2
         cos.quejas = Math.trunc(cos.quejas)
-        update("myLog", "QUEJA: "+quejas    s[Math.floor(Math.round() * quejas.length)])
+        update("myLog", "QUEJA: "+quejas[Math.floor(Math.round() * quejas.length)])
         texto()
         actualizacion()
     } else {
