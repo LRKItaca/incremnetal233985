@@ -11,24 +11,31 @@
 <body>
     <header id="cabecera">
        <p id = "cabesita">ITACA CLICKER</p>
+       <img style="width:25 px; height: 25px;" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Veyon-logo.svg/1200px-Veyon-logo.svg.png");>
     </header>    
     
     <div>
-        <p id = "partes">0 Partes. Actualemte: 0 PS.</p>
+        <p id = "partes">0 Partes. Actualmente: 0 PS.</p>
         <p id = "dinero">0 Euros</p>
         <button onclick="parte()" id="parte">Dar un parte.</button>
         <p id="myLog">CONSOLA.</p>
+        <p id="vigilando">SIEMPRE ESTAMOS VIGILANDO - VEYON</p>
     </div>
     
     <hr class="separador"> 
     <div id = tienda> 
-    <button onclick="subir()" id = "subir" style="display:none" >+ 1 P/C | Subir un PDF. Coste: 10 | Tienes: 0 PDFs </button>
-    <button onclick="confiscar()" id = "confiscar" style="display:none">+ 3 P/C | Confisca un móvil. Coste: 200 | Tienes 0 móviles.</button>
-    <button onclick="vender()" style="display:none" id="vender">Vender 200 partes por 1 €</button>
+    <button onclick="subir()" id = "subir" style="display:none" >+ 1 P/C | Subir un PDF. Coste: 10 | Tienes 0 PDFs </button>
+    <button onclick="confiscar()" id = "confiscar" style="display:none">+ 3 P/C | Confisca un móvil | Coste: 200 | Tienes 0 móviles</button>
+    <button onclick="norma()" id = "norma" style="display:none">+10 P/C | Establece una nueva norma | Coste: 400 | Has introducido 0 normas</button>
+    <button onclick="parking()" id="parking" style="display:none">+20 P/C | Pon multas por usar el parking. | Coste: 700 Partes | Has puesto 0 multas</button>
     <br><br><br>
-    <button onclick="sigad()" id = "sigad" style="display:none">+ 10 P/S | Automatizar el SIGAD | Has automatizado 0 SIGADs </button>
-    <button onclick = "quejas()" id = "quejas" style="display:none" >+ 20 P/S | Abrir un buzón de quejas | Has abierto 0 buzones</button>
-    
+    <button onclick="acoger()" id="alumno"style = "display:none">+ 5 P/S | Acoger más alumnos | Coste: 1000 | Has acogido 0 alumnos</button>
+    <button onclick="sigad()" id = "sigad" style="display:none">+ 10 P/S | Automatizar el SIGAD | Coste: 5000 |Has automatizado 0 SIGADs </button>
+    <button onclick ="quejas()" id = "quejas" style="display:none" >+ 20 P/S | Abrir un buzón de quejas | Coste: 10000 | Has abierto 0 buzones</button>
+    <button onclick="ordenador()"id="ordenador"style="display:none">+30 P/S | Mover el ratón automáticamente a los alumnos | Coste: 15000 | Has movido 0 ratones</button>
+    <br><br><br>
+    <button onclick="vender()" style="display:none" id="vender">Vender 1000 partes por 1 €</button>
+    <button onclick="comprar()" style = "display:none" id = "comprar">+1 E/S | Comprar una mina de bitcoins por 100 € | Tienes 0 minas</button>
 
 
 
